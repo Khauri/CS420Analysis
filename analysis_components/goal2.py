@@ -18,7 +18,7 @@ an apk are passed in as parameters to this function.
                 see: https://github.com/androguard/androguard/blob/master/androguard/core/bytecodes/dvm.py#L7471
 '''
 def main(apk, dvm):
-    print("Analyzing SSL missuse")
+    print("-- Analyzing SSL missuse --")
     # Example: Get a list of all the strings that start with "http(s)://"
     urls = []
     for string in dvm.get_strings():

@@ -18,7 +18,7 @@ an apk are passed in as parameters to this function.
                 see: https://github.com/androguard/androguard/blob/master/androguard/core/bytecodes/dvm.py#L7471
 '''
 def main(apk, dvm):
-    print("Analyzing Permission Missuse")
+    print("-- Analyzing Permission Missuse --")
     # Example: Get the app permissions
     permissions = apk.get_permissions()
     # print(permissions)

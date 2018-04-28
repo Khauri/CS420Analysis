@@ -17,6 +17,7 @@ an apk are passed in as parameters to this function.
                 see: https://github.com/androguard/androguard/blob/master/androguard/core/bytecodes/dvm.py#L7471
 '''
 def main(apk, dvm):
+    print("-- Analyzing Interface Vulnerabilities --")
     # Example: Get a list of the classes
     classes = dvm.get_classes()
     # print(classes)
