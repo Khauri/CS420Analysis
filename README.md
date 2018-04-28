@@ -1,5 +1,9 @@
 # CS420Analysis
 
+## Usages
+
+```$python main.py [-i apps_folder] [-n number_to_analyzs]```
+
 ## Dependencies
 [Androguard](https://github.com/androguard/androguard)
 
