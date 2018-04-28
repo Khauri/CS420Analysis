@@ -1,1 +1,1 @@
-import manifest
+import goal1, goal2, goal3
