@@ -22,8 +22,8 @@ def analyze_app(apk_filename):
         d = DalvikVMFormat(apk.get_all_dex())
     else:
         d = DalvikVMFormat(apk)
-    components.goal1.main(apk, d)
-    components.goal2.main(apk, d)
+    # components.goal1.main(apk, d)
+    # components.goal2.main(apk, d)
     components.goal3.main(apk, d)
     print("")
 

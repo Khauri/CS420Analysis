@@ -22,3 +22,8 @@ def main(apk, dvm):
     # Example: Get the app permissions
     permissions = apk.get_permissions()
     # print(permissions)
+
+def rank_permission_usage():
+    '''
+    Returns a ranking of the permission combinations
+    '''
