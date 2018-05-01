@@ -2,29 +2,38 @@
 import os 
 import re
 import sys
+import csv
 import argparse
+from timeit import default_timer as timer
 
+from androguard.misc import AnalyzeAPK
 from androguard.core.bytecodes.apk import APK
-from androguard.core.androconf import show_logging
-from androguard.core.analysis.analysis import Analysis
 from androguard.core.bytecodes.dvm import DalvikVMFormat
-from androguard.decompiler.decompiler import DecompilerJADX
 
 import analysis_components as components
 
 # Analyze a specific application directory 
 def analyze_app(apk_filename):
     print("APK: %s" % apk_filename)
-    # Load the APK
-    apk = APK(apk_filename)
-    # Create DalvikVMFormat Object
-    if apk.is_multidex():
-        d = DalvikVMFormat(apk.get_all_dex())
-    else:
-        d = DalvikVMFormat(apk)
-    # components.goal1.main(apk, d)
-    # components.goal2.main(apk, d)
-    components.goal3.main(apk, d)
+    apk, d, dx = AnalyzeAPK(apk_filename)
+    app_name = apk.get_app_name()
+    # with open('goal1.csv', 'a') as csvfile:
+    #     writer = csv.writer(csvfile, quoting=csv.QUOTE_MINIMAL)
+    #     result = components.goal1.main(apk, d[0], dx)
+    #     result.insert(0, app_name)
+    #     writer.writerow(result)
+
+    with open('goal2.csv', 'a') as csvfile:
+        writer = csv.writer(csvfile, quoting=csv.QUOTE_MINIMAL)
+        result = components.goal2.main(apk, d[0], dx)
+        result.insert(0, app_name)
+        writer.writerow(result)
+
+    # with open('goal3.csv', 'a') as csvfile:
+    #     writer = csv.writer(csvfile, quoting=csv.QUOTE_MINIMAL)
+    #     result = components.goal3.main(apk, d[0], dx)
+    #     result.insert(0, app_name)
+    #     writer.writerow(result)
     print("")
 
 # 1. Decompose the apk 
@@ -35,8 +44,21 @@ def analyze_directory(directory, num):
     Analyze an entire directory of decompiled or non-decompiled
     andorid applications
     '''
+    # Create the CSV files (erases existing code)
+    # with open('goal1.csv', 'wb') as csvfile:
+    #     writer = csv.writer(csvfile, quoting=csv.QUOTE_MINIMAL)
+    #     writer.writerow(['App']) # TODO
+
+    with open('goal2.csv', 'wb') as csvfile:
+        writer = csv.writer(csvfile, quoting=csv.QUOTE_MINIMAL)
+        writer.writerow(['App', 'Incorrectly Pinned SSC', 
+            'SSL Mixing', 'Allow All Hostnames', 'Allow All Trust Manager'])
+
+    # with open('goal3.csv', 'wb') as csvfile:
+    #     writer = csv.writer(csvfile, quoting=csv.QUOTE_MINIMAL)
+    #     writer.writerow(['App']) # TODO
+
     # iterate through directory searching for apks 
-    # decompile app if not already decompiled 
     # analyze the application
     path = os.path.abspath(directory)
     for p, d, f in os.walk(path):
@@ -59,4 +81,6 @@ if __name__ == "__main__":
     args = parser.parse_args()
     if args.input:
         print("Analyzing from directory %s" % args.input)
+    start = timer()
     analyze_directory(args.input or os.path.join(".","apps"), args.number or float('inf'))
+    print(timer() - start)

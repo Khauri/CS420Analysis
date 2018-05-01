@@ -16,7 +16,7 @@ an apk are passed in as parameters to this function.
                 Used for analyzing "decompiled" code
                 see: https://github.com/androguard/androguard/blob/master/androguard/core/bytecodes/dvm.py#L7471
 '''
-def main(apk, dvm):
+def main(apk, dvm, dx):
     print("-- Analyzing Interface Vulnerabilities --")
     # Example: Get a list of the classes
     classes = dvm.get_classes()
@@ -35,6 +35,7 @@ def main(apk, dvm):
         #         print(c.get_name())
         # for method in c.get_methods():
         #     print(method)
+    return []
 
 def sanitizes_input():
     pass
