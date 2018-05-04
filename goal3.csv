@@ -1,12 +1,3 @@
 App,Open Components,Receives Data,Permission Checking,Component Permissions
-Crestron,1,1,0,
-Shelly,1,1,0,com.google.android.c2dm.permission.SEND
-SmartHome,0,0,0
-IoT Commander,0,0,0
-ABB DomusTech,0,0,0
-free@home,1,1,0,com.google.android.c2dm.permission.SEND android.permission.INSTALL_PACKAGES android.permission.BIND_JOB_SERVICE com.google.android.c2dm.permission.SEND
-abode,1,1,1,com.abode.abode.permission.PushHandlerActivity com.google.android.c2dm.permission.SEND
-Active Home Vista,1,1,0,
-HCA,1,1,0,
-CPI,1,1,0,com.google.android.c2dm.permission.SEND
-TC 2.0,1,1,0,com.google.android.c2dm.permission.SEND
+Colormania - Guess the Colors,1,0,0,com.google.android.c2dm.permission.SEND
+Reward Hunter,0,0,0
