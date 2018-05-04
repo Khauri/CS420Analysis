@@ -56,25 +56,25 @@ def main(apk, dvm, dx):
                 string = string.strip()
                 #Q5    
                 #check later if all managers and hostnames are being allowed
-                if re.search('allow', string, re.IGNORECASE):
+                if re.search(r'allow', string, re.IGNORECASE):
                     allow.append(string)
-                if re.search('trust', string, re.IGNORECASE):
+                if re.search(r'trust', string, re.IGNORECASE):
                     trust.append(string)
                 #Q6
                 #if a certificate is self signed, then generateCertificate() must be used to hardcode it
                 #step1: read in certificate
-                if re.search('generateCertificate', string, re.IGNORECASE):
+                if re.search(r'generateCertificate', string, re.IGNORECASE):
                     flag1 += 1
                     # print("self signed certificate")
                 #step2: create custom trustmanager
                 #create keystore containing trusted CAs
-                if re.search('keystore', string, re.IGNORECASE) and flag1>0:
+                if re.search(r'keystore', string, re.IGNORECASE) and flag1>0:
                     flag2 += 1
                 #create trust manager that trusts the CAs in our keystore
-                if re.search('trustmanagerfactory', string, re.IGNORECASE) and flag2>0:
+                if re.search(r'trustmanagerfactory', string, re.IGNORECASE) and flag2>0:
                     flag3 += 1
                 #create sslcontext that uses our trustmanager
-                if re.search('sslcontext', string, re.IGNORECASE) and flag3>0:
+                if re.search(r'sslcontext', string, re.IGNORECASE) and flag3>0:
                     flag4 += 1
     #at the end of the app, if the 4th flag is down, then the self-signed certificate is correctly pinned 
     if flag1 > 0 and flag4 < 0:
@@ -93,13 +93,13 @@ def main(apk, dvm, dx):
             #if both are found, then the app is a mixture
     
     for string in allow:
-        if re.search('all', string, re.IGNORECASE) and re.search('hostname', string, re.IGNORECASE):
+        if re.search(r'all', string, re.IGNORECASE) and re.search(r'hostname', string, re.IGNORECASE):
             # print('allows all host name verifiers!')
             result[2] = True
             #if some variation of the string allowallhostnames is found
             
     for string in trust:
-        if re.search('all', string, re.IGNORECASE) and re.search('manager', string, re.IGNORECASE):
+        if re.search(r'all', string, re.IGNORECASE) and re.search(r'manager', string, re.IGNORECASE):
             # print('allows all trust managers!')
             result[3] = True
             #if some variation of the string allowalltrustmanagers is found

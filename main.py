@@ -23,17 +23,17 @@ def analyze_app(apk_filename):
     #     result.insert(0, app_name)
     #     writer.writerow(result)
 
-    with open('goal2.csv', 'a') as csvfile:
-        writer = csv.writer(csvfile, quoting=csv.QUOTE_MINIMAL)
-        result = components.goal2.main(apk, d[0], dx)
-        result.insert(0, app_name)
-        writer.writerow(result)
-
-    # with open('goal3.csv', 'a') as csvfile:
+    # with open('goal2.csv', 'a') as csvfile:
     #     writer = csv.writer(csvfile, quoting=csv.QUOTE_MINIMAL)
-    #     result = components.goal3.main(apk, d[0], dx)
+    #     result = components.goal2.main(apk, d[0], dx)
     #     result.insert(0, app_name)
     #     writer.writerow(result)
+
+    with open('goal3.csv', 'a') as csvfile:
+        writer = csv.writer(csvfile, quoting=csv.QUOTE_MINIMAL)
+        result = components.goal3.main(apk, d[0], dx)
+        result.insert(0, app_name)
+        writer.writerow(result)
     print("")
 
 # 1. Decompose the apk 
@@ -49,26 +49,33 @@ def analyze_directory(directory, num):
     #     writer = csv.writer(csvfile, quoting=csv.QUOTE_MINIMAL)
     #     writer.writerow(['App']) # TODO
 
-    with open('goal2.csv', 'wb') as csvfile:
-        writer = csv.writer(csvfile, quoting=csv.QUOTE_MINIMAL)
-        writer.writerow(['App', 'Incorrectly Pinned SSC', 
-            'SSL Mixing', 'Allow All Hostnames', 'Allow All Trust Manager'])
-
-    # with open('goal3.csv', 'wb') as csvfile:
+    # with open('goal2.csv', 'wb') as csvfile:
     #     writer = csv.writer(csvfile, quoting=csv.QUOTE_MINIMAL)
-    #     writer.writerow(['App']) # TODO
+    #     writer.writerow(['App', 'Incorrectly Pinned SSC', 
+    #         'SSL Mixing', 'Allow All Hostnames', 'Allow All Trust Manager'])
+
+    with open('goal3.csv', 'wb') as csvfile:
+        writer = csv.writer(csvfile, quoting=csv.QUOTE_MINIMAL)
+        writer.writerow(['App', 'Open Components', 'Receives Data', 'Permission Checking', "Component Permissions" ]) # TODO
 
     # iterate through directory searching for apks 
     # analyze the application
-    path = os.path.abspath(directory)
-    for p, d, f in os.walk(path):
-        for filename in f:
-            absp = os.path.abspath(os.path.join(p, filename))
-            if absp.endswith('.apk'):
-                analyze_app(absp)
-                num -= 1
-                if num <= 0:
-                    return
+    with open('log.txt', 'w') as logfile:
+        failures = 0
+        path = os.path.abspath(directory)
+        for p, d, f in os.walk(path):
+            for filename in f:
+                absp = os.path.abspath(os.path.join(p, filename))
+                if absp.endswith('.apk'):
+                    if num <= 0:
+                        return
+                    try:
+                        analyze_app(absp)
+                        num -= 1
+                    except:
+                        logfile.write(absp + "\n")
+                        failures += 1
+        logfile.write("Total Failues: " + str(failures))
 
 if __name__ == "__main__":
     # decompiler = DecompilerJADX(d, dx, jadx="/home/vagrant/jadx/build/jadx/bin/jadx")
