@@ -17,11 +17,8 @@ def analyze_app(apk_filename):
     print("APK: %s" % apk_filename)
     apk, d, dx = AnalyzeAPK(apk_filename)
     app_name = apk.get_app_name()
-    # with open('goal1.csv', 'a') as csvfile:
-    #     writer = csv.writer(csvfile, quoting=csv.QUOTE_MINIMAL)
-    #     result = components.goal1.main(apk, d[0], dx)
-    #     result.insert(0, app_name)
-    #     writer.writerow(result)
+    
+    components.goal1.main(apk, d[0], dx)
 
     with open('goal2.csv', 'a') as csvfile:
         writer = csv.writer(csvfile, quoting=csv.QUOTE_MINIMAL)
@@ -47,7 +44,7 @@ def analyze_directory(directory, num):
     # Create the CSV files (erases existing code)
     with open('goal1.csv', 'w') as csvfile:
         writer = csv.writer(csvfile, quoting=csv.QUOTE_MINIMAL)
-        writer.writerow(['App']) 
+        writer.writerow(['App', 'Violates Rules']) 
 
     with open('goal2.csv', 'w') as csvfile:
         writer = csv.writer(csvfile, quoting=csv.QUOTE_MINIMAL)
