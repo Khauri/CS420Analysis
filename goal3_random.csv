@@ -1,0 +1,51 @@
+App,Open Components,Receives Data,Permission Checking,Component Permissions
+Colormania - Guess the Colors,1,0,0,com.google.android.c2dm.permission.SEND
+Reward Hunter,0,0,0
+pokemonquiz,0,0,0
+SWAT & Zombie,0,0,0
+Speedboat Shooting,1,1,0,
+Chess Free,1,1,0,
+AngryHeroes,1,1,0,
+* Numbers Addict *,0,0,0
+Ex Bike,1,0,0,com.google.android.c2dm.permission.SEND
+Pocket Tanks,1,1,0,
+Candy Crush Saga Tips,1,1,0,
+HR Battle 2,1,1,0,com.google.android.c2dm.permission.SEND
+Moron Test: Section 2,0,0,0
+EgyptReelsOfLuxor,1,1,0,
+Mahjong Dlx HDF,1,1,0,
+Jewels Maze!,0,0,0
+Zombie World War,1,1,0,
+Hungry Shark 3,1,1,0,
+Titanic,1,1,0,
+Any Emulator ROMS,0,0,0
+Prize Claw,1,1,0,
+Icomania,0,0,0
+Colony Attack,1,0,0,com.google.android.c2dm.permission.SEND
+CK Zombies,1,1,0,com.google.android.c2dm.permission.SEND
+Archery,0,0,0
+Hobbit: KoM,1,1,0,
+Domino Solitaire,1,0,0,
+SG: DeadZone,1,1,0,
+MathOpen,0,0,0
+Memory,1,1,0,
+IQ Test,1,1,0,
+Creeper Def,0,0,0
+Alchemy Classic HD,1,1,0,
+Mind Games,0,0,0
+Angry Birds,1,0,0,com.google.android.c2dm.permission.SEND
+Yachty,0,0,0
+Bubble Blast,0,0,0
+Crossword Pop,1,1,0,com.google.android.c2dm.permission.SEND
+Burn,1,1,0,
+Hidden Objects,1,1,0,com.google.android.c2dm.permission.SEND
+graBLOX,1,1,0,
+Your Island DEMO,0,0,0
+Quizoid,0,0,0
+War of Legions,1,1,0,true com.google.android.c2dm.permission.SEND
+Alchemy,1,1,0,
+Mickey Mouse Clubhouse Matching Games,0,0,0
+Jungle Heat,1,1,0,
+Dark Legends,1,1,0,com.google.android.c2dm.permission.SEND
+Go Free,0,0,0
+What's The Saying?,1,1,0,com.google.android.c2dm.permission.SEND
